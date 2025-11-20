@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./normalizer.css";
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background-color: hsl(234, 29%, 20%);
+  color: hsl(234, 29%, 20%);
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol,
+li::marker {
+  content: "";
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+.subscribe {
+  position: relative;
+}
+
+.sub-inner {
+  display: flex;
+  margin: 0 auto 0 auto;
+  max-width: 1200px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-main {
+  display: flex;
+  max-width: 700px;
+  height: 450px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.sub-main.active {
+  filter: blur(30px) brightness(50%);
+}
+
+.sub-main-content {
+  width: 50%;
+  height: 100%;
+  padding: 0 30px 0 30px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.content-heading {
+  font-size: 42px;
+}
+
+.content-ads {
+  margin-bottom: 30px;
+}
+
+.content-list li {
+  margin-bottom: 15px;
+}
+
+.content-list li img {
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#sub-main-form {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.email {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid hsl(0, 0%, 58%);
+  border-radius: 5px;
+}
+
+.btn-submit {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(234, 29%, 20%);
+  color: white;
+}
+
+.btn-submit::after {
+  content: "Subscribe to monthly newsletter";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  line-height: 39px;
+  background: linear-gradient(90deg, rgb(252, 176, 69) 0%, rgb(253, 29, 29) 50%, rgb(131, 58, 180) 100%);
+  transition: 1s;
+  opacity: 0;
+}
+
+.btn-submit:hover::after {
+  transition: 0.5s;
+  opacity: 1;
+}
+
+.sub-main-image {
+  width: 50%;
+  height: 100%;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+}
+
+.sub-success {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto 0 auto;
+  max-width: 300px;
+  padding: 40px;
+  border-radius: 15px;
+  background-color: white;
+  opacity: 0;
+}
+
+.sub-success.active {
+  display: block;
+  opacity: 1;
+}
+
+.sub-success img {
+  width: 50px;
+  height: 50px;
+}
+
+.success-heading {
+  font-size: 42px;
+}
+
+.success-content {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.btn-dismiss {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(234, 29%, 20%);
+  color: white;
+}
+
+.btn-dismiss::after {
+  content: "Thank you for Subscribing!";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  line-height: 39px;
+  background: linear-gradient(90deg, rgb(252, 176, 69) 0%, rgb(253, 29, 29) 50%, rgb(131, 58, 180) 100%);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.btn-dismiss:hover::after {
+  opacity: 1;
+}
+
+@media screen and (max-width: 480px) {
+  * {
+    box-sizing: border-box;
+  }
+  .sub-inner {
+    max-width: 480px;
+    height: 100vh;
+  }
+  .sub-main {
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    border-radius: 0;
+  }
+  .sub-main-content {
+    width: 100%;
+    padding: 30px;
+    font-size: 16px;
+  }
+  .sub-main-image {
+    width: 100%;
+    height: auto;
+  }
+  .main-image {
+    height: auto;
+  }
+  .sub-success {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 480px;
+    width: 100%;
+    height: 100vh;
+    padding: 40px;
+    border-radius: 0;
+    background-color: white;
+  }
+  .success-content {
+    font-size: 16px;
+  }
+  .btn-dismiss {
+    position: absolute;
+    left: 50%;
+    bottom: 100px;
+    width: 90%;
+    height: 60px;
+    transform: translateX(-50%);
+    border: none;
+  }
+}/*# sourceMappingURL=style.css.map */
