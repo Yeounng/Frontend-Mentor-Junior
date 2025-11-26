@@ -1,0 +1,181 @@
+@use "./normalizer.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+$breakpoints: (
+  desktop-wide: 1440px,
+  desktop: 1200px,
+  tablet: 768px,
+  mobile: 376px,
+);
+
+$green-900: hsl(183, 100%, 15%);
+$green-800: hsl(183, 100%, 20%);
+$green-400: hsl(172, 67%, 45%);
+$grey-500: hsl(186, 14%, 43%);
+$grey-400: hsl(184, 14%, 56%);
+$grey-200: hsl(185, 41%, 84%);
+$grey-50: hsl(189, 47%, 97%);
+
+$green-400-filter: brightness(0) saturate(100%) invert(62%) sepia(67%)
+  saturate(486%) hue-rotate(122deg) brightness(90%) contrast(84%);
+
+@mixin responsive($points) {
+  @media screend and (max-width: map-get($breakpoints, $points)) {
+    @content;
+  }
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+@mixin calc-input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: $grey-50;
+}
+
+// section.app {
+//   position: relative;
+//   width: 100vw;
+//   min-height: fit-content;
+//   background-color: $green-400;
+// }
+
+// .container {
+//   @include absolute-center();
+//   max-width: 1200px;
+//   width: 100vw;
+//   background-color: white;
+// }
+
+// .logo {
+//   width: fit-content;
+//   margin: 0 auto 60px auto;
+// }
+
+section.app input {
+  @include calc-input;
+}
+section.app input:focus {
+  outline-color: $green-400;
+}
+
+section.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: "space mono";
+  color: $green-900;
+  background-color: $grey-200;
+  font-weight: 700;
+}
+
+.logo {
+  margin-bottom: 60px;
+}
+
+.container {
+  display: flex;
+  min-width: 50vw;
+  padding: 30px;
+  gap: 20px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.calc-main {
+  width: 50%;
+  padding-right: 30px;
+}
+.calc-main label {
+  display: block;
+  margin-bottom: 5px;
+}
+.calc-main .bill {
+  margin-bottom: 30px;
+}
+
+.calc-tipping {
+  margin-bottom: 30px;
+}
+
+.tipping-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 8px;
+}
+.grid-item {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $green-900;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  cursor: pointer; //button 요소는 아니고 js에 클릭 이벤트 넣을거임
+}
+.grid-item::after {
+  content: "%";
+  margin-left: 5px;
+}
+
+.grid-item:last-child {
+  color: $green-900;
+  background-color: $grey-200;
+}
+.calc-result {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 30px;
+  background-color: $green-900;
+  border-radius: 15px;
+  color: white;
+}
+
+.result-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.result-box .text-box {
+  width: 50%;
+}
+
+.result-box .price {
+  width: 50%;
+  font-size: 32px;
+  text-align: right;
+  color: $green-400;
+}
+.result-box .price::before {
+  content: url(./images/icon-dollar.svg);
+  filter: $green-400-filter;
+  margin-right: 5px;
+}
+
+button.reset {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $green-800;
+  color: $green-900;
+  font-weight: 700;
+  transition: 0.2s;
+}
+button.reset.active {
+  background-color: $green-400;
+}
