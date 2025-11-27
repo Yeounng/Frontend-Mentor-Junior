@@ -311,12 +311,21 @@ template {
   display: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 section.app input {
   width: 100%;
   padding: 8px;
   border: none;
   border-radius: 5px;
+  text-align: right;
   background-color: hsl(189, 47%, 97%);
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(183, 100%, 15%);
+  transition: 0.2s;
 }
 
 section.app input:focus {
@@ -338,6 +347,11 @@ section.app {
 .logo {
   margin-bottom: 60px;
 }
+@media screen and (max-width: 768px) {
+  .logo {
+    margin-top: 60px;
+  }
+}
 
 .container {
   display: flex;
@@ -347,10 +361,21 @@ section.app {
   background-color: white;
   border-radius: 15px;
 }
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
 
 .calc-main {
   width: 50%;
   padding-right: 30px;
+}
+@media screen and (max-width: 768px) {
+  .calc-main {
+    width: 100%;
+    padding-right: 0;
+  }
 }
 
 .calc-main label {
@@ -372,6 +397,12 @@ section.app {
   grid-template-rows: 1fr;
   gap: 8px;
 }
+@media screen and (max-width: 768px) {
+  .tipping-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
 
 .grid-item {
   padding: 10px;
@@ -381,6 +412,7 @@ section.app {
   color: white;
   text-align: center;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .grid-item::after {
@@ -389,8 +421,48 @@ section.app {
 }
 
 .grid-item:last-child {
+  position: relative;
   color: hsl(183, 100%, 15%);
   background-color: hsl(185, 41%, 84%);
+}
+
+.grid-item:last-child::after {
+  content: "";
+}
+
+.grid-item input#custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+}
+
+.grid-item input#custom.active {
+  opacity: 1;
+}
+
+.grid-item:hover {
+  background-color: hsl(172, 67%, 45%);
+}
+
+.grid-item.active {
+  background-color: hsl(172, 67%, 45%);
+}
+
+.people-message {
+  display: flex;
+  justify-content: space-between;
+}
+
+.zero-alert {
+  color: orangered;
+}
+
+input.num-ppl.active:focus {
+  outline-color: orangered;
 }
 
 .calc-result {
@@ -401,6 +473,11 @@ section.app {
   background-color: hsl(183, 100%, 15%);
   border-radius: 15px;
   color: white;
+}
+@media screen and (max-width: 768px) {
+  .calc-result {
+    width: 100%;
+  }
 }
 
 .result-box {
@@ -425,6 +502,12 @@ section.app {
   content: url(./images/icon-dollar.svg);
   filter: brightness(0) saturate(100%) invert(62%) sepia(67%) saturate(486%) hue-rotate(122deg) brightness(90%) contrast(84%);
   margin-right: 5px;
+}
+
+.result-box p {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 button.reset {

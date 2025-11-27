@@ -21,7 +21,7 @@ $green-400-filter: brightness(0) saturate(100%) invert(62%) sepia(67%)
   saturate(486%) hue-rotate(122deg) brightness(90%) contrast(84%);
 
 @mixin responsive($points) {
-  @media screend and (max-width: map-get($breakpoints, $points)) {
+  @media screen and (max-width: map-get($breakpoints, $points)) {
     @content;
   }
 }
@@ -38,7 +38,12 @@ $green-400-filter: brightness(0) saturate(100%) invert(62%) sepia(67%)
   padding: 8px;
   border: none;
   border-radius: 5px;
+  text-align: right;
   background-color: $grey-50;
+  font-size: 18px;
+  font-weight: 700;
+  color: $green-900;
+  transition: 0.2s;
 }
 
 // section.app {
@@ -59,6 +64,10 @@ $green-400-filter: brightness(0) saturate(100%) invert(62%) sepia(67%)
 //   width: fit-content;
 //   margin: 0 auto 60px auto;
 // }
+
+* {
+  box-sizing: border-box;
+}
 
 section.app input {
   @include calc-input;
@@ -81,6 +90,9 @@ section.app {
 
 .logo {
   margin-bottom: 60px;
+  @include responsive(tablet) {
+    margin-top: 60px;
+  }
 }
 
 .container {
@@ -90,11 +102,18 @@ section.app {
   gap: 20px;
   background-color: white;
   border-radius: 15px;
+  @include responsive(tablet) {
+    flex-direction: column;
+  }
 }
 
 .calc-main {
   width: 50%;
   padding-right: 30px;
+  @include responsive(tablet) {
+    width: 100%;
+    padding-right: 0;
+  }
 }
 .calc-main label {
   display: block;
@@ -113,6 +132,10 @@ section.app {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 8px;
+  @include responsive(tablet) {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
 }
 .grid-item {
   padding: 10px;
@@ -122,16 +145,54 @@ section.app {
   color: white;
   text-align: center;
   cursor: pointer; //button 요소는 아니고 js에 클릭 이벤트 넣을거임
+  transition: 0.2s;
 }
 .grid-item::after {
   content: "%";
   margin-left: 5px;
 }
-
 .grid-item:last-child {
+  position: relative;
   color: $green-900;
   background-color: $grey-200;
 }
+.grid-item:last-child::after {
+  content: "";
+}
+.grid-item input#custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+}
+
+.grid-item input#custom.active {
+  opacity: 1;
+}
+
+.grid-item:hover {
+  background-color: $green-400;
+}
+.grid-item.active {
+  background-color: $green-400;
+}
+
+.people-message {
+  display: flex;
+  justify-content: space-between;
+}
+
+.zero-alert {
+  color: orangered;
+}
+
+input.num-ppl.active:focus {
+  outline-color: orangered;
+}
+
 .calc-result {
   display: flex;
   flex-direction: column;
@@ -140,6 +201,9 @@ section.app {
   background-color: $green-900;
   border-radius: 15px;
   color: white;
+  @include responsive(tablet) {
+    width: 100%;
+  }
 }
 
 .result-box {
@@ -163,6 +227,12 @@ section.app {
   content: url(./images/icon-dollar.svg);
   filter: $green-400-filter;
   margin-right: 5px;
+}
+
+.result-box p {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 button.reset {
