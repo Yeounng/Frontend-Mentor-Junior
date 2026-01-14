@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+@import url(/normalizer.css);
+
+$green-200: hsl(148, 38%, 91%);
+$green-600: hsl(169, 82%, 27%);
+$grey-500: hsl(186, 15%, 59%);
+$grey-900: hsl(187, 24%, 22%);
+
+$breakpoints: (
+  desktop-wide: 1440px,
+  desktop: 1200px,
+  tablet-wide: 980px,
+  tablet: 768px,
+  mobile-wide: 480px,
+  mobile: 376px,
+);
+
+@mixin responsive($points) {
+  @media screen and (max-width: map-get($breakpoints,$points)) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+}
+
+ul,
+ol,
+li {
+  padding-left: 0;
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset,
+textarea {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+textarea:focus-visible {
+  outline: 2px solid $green-600;
+}
+
+//label 가로폭 100% 차지
+label {
+  display: block;
+  width: 100%;
+}
+
+@mixin inputbox {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+input[type="text"] {
+  @include inputbox;
+}
+input[type="email"] {
+  @include inputbox;
+}
+
+input:focus-visible {
+  outline: 2px solid $green-600;
+}
+input:hover {
+  border: 1px solid $green-600;
+}
+
+//버튼 컴포넌트
+button[type="submit"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid $green-600;
+  border-radius: 5px;
+  text-align: center;
+  background-color: $green-600;
+  color: white;
+  cursor: pointer;
+  transform: translateX(0);
+}
+
+button.shake {
+  animation-name: shake-invalid;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.5s;
+}
+
+@keyframes shake-invalid {
+  0% {
+    transform: translateX(-15px);
+  }
+  15% {
+    transform: translateX(15px);
+  }
+  30% {
+    transform: translateX(-25px);
+  }
+  45% {
+    transform: translateX(25px);
+  }
+  60% {
+    transform: translateX(-15px);
+  }
+  75% {
+    transform: translateX(15px);
+  }
+  85% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// 에러메세지 공통
+span.error-message {
+  display: none;
+  width: 100%;
+  color: red;
+}
+span.error-message.active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+//asterisk * 여백
+span.required {
+  margin-left: 5px;
+}
+
+section {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: $green-200;
+}
+
+form {
+  min-width: 600px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.form-title {
+  margin-bottom: 15px;
+}
+//각 input이 담길 컨테이너
+.container {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.user-name {
+  display: flex;
+  gap: 15px;
+}
+.user-name-box {
+  width: 50%;
+}
+.query-type {
+  display: block;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  border: none;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-item {
+  display: flex;
+  width: 50%;
+  height: 40px;
+  margin-top: 10px;
+  padding: 0 10px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.radio-item:hover {
+  border: 1px solid $green-600;
+}
+
+.message-box {
+  flex-wrap: wrap;
+}
+.message-box:hover > textarea {
+  border: 1px solid $green-600;
+}
+
+.message-box > textarea {
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.consent {
+  display: block;
+  gap: 0;
+}
+
+.consent-box {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.consent-box > input[type="checkbox"] {
+  height: auto;
+}
+
+.success-message {
+  position: absolute;
+  width: 400px;
+  height: 80px;
+  padding: 15px;
+  left: 50%;
+  top: 3%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  background-color: $grey-900;
+  color: white;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in;
+}
+.success-message.active {
+  left: 50%;
+  top: 12%;
+  visibility: visible;
+  opacity: 1;
+}
+
+.success-message img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.success-message span {
+  vertical-align: middle;
+}
+
+.success-message p {
+  font-size: 14px;
+}
