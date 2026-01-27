@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <script defer src="/app.js"></script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+    <title>Frontend Mentor | Body Mass Index Calculator</title>
+  </head>
+  <body>
+    <main class="bmi-calculator">
+      <section class="calculator">
+        <div class="logo"><img src="/assets/images/logo.svg" alt="logo" /></div>
+        <div class="container">
+          <div class="calculator-content">
+            <h1 class="main-title">Body Mass Index Calculator</h1>
+            <p class="main-description">
+              Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI
+              is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall
+              health and well-being.
+            </p>
+          </div>
+          <div class="bmi-app">
+            <!-- BEM 구분자. 부모__자식 느낌 -->
+            <form action="/app.js" class="bmi-app__form">
+              <!-- 항목을 한줄로 표현할 수 있나? 라면 숨겨진 h 태그 넣기 -->
+              <h2 class="sr-only">Calculator Inputs</h2>
+
+              <h2 class="content-title">Enter your details below</h2>
+              <div class="app-wrapper">
+                <!-- 이 입력 요소들이 하나의 주제를 공유하는가?" (예: 단위 선택) -> 그룹화 필요 -->
+                <fieldset class="measurement-unit">
+                  <!-- 디자인에 legend가 존재하지 않는다면 접근성 트리에만 노출 -->
+                  <legend class="sr-only">Select Measurement Unit System</legend>
+                  <div class="radio-group">
+                    <div class="radio">
+                      <input type="radio" name="unit" id="metric" value="metric" checked required />
+                      <label for="metric">Metric</label>
+                    </div>
+                    <div class="radio">
+                      <input type="radio" name="unit" id="imperial" value="imperial" required />
+                      <label for="imperial">Imperial</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <!-- user input metric -->
+              <div class="user-data metric active">
+                <div class="input-box height">
+                  <label for="height-metric">Height</label>
+                  <input type="number" name="user-data-metric" id="height-cm" placeholder="0" min="0" />
+                </div>
+                <div class="input-box weight">
+                  <label for="weight-metric">Weight</label>
+                  <input type="number" name="user-data-metric" id="weight-kg" placeholder="0" min="0" />
+                </div>
+              </div>
+              <!-- user input imperial -->
+              <div class="user-data imperial">
+                <fieldset class="input-box height">
+                  <legend class="sr-only">Put in your height in feet, inches</legend>
+                  <label for="height-imperial">Height</label>
+                  <div class="input-wrapper">
+                    <input type="number" name="user-data-imperial" id="height-ft" placeholder="0" min="0" />
+                    <input type="number" name="user-data-imperial" id="height-in" placeholder="0" min="0" />
+                  </div>
+                </fieldset>
+                <fieldset class="input-box weight">
+                  <legend class="sr-only">Put in your weight in stone, pounds</legend>
+                  <label for="weight-imperial">Weight</label>
+                  <div class="input-wrapper">
+                    <input type="number" name="user-data-imperial" id="weight-st" placeholder="0" min="0" />
+                    <input type="number" name="user-data-imperial" id="weight-lb" placeholder="0" min="0" />
+                  </div>
+                </fieldset>
+              </div>
+            </form>
+            <div class="bmi-result" aria-live="polite">
+              <div class="result-box">
+                <span class="result-is">Your BMI is...</span>
+                <!-- add score -->
+                <output class="result-bmi"></output>
+              </div>
+              <div class="result-content">
+                <span>Your BMI suggests you're </span>
+                <span class="classification"><!-- add classification --></span>
+                <span>Your ideal weight is between</span>
+                <span class="range"><!-- add range --></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="what-means">
+        <div class="main-image"><img src="/assets/images/image-man-eating.webp" alt="man eating food" /></div>
+        <div class="content">
+          <h2 class="content-title">What your BMI result means</h2>
+          <p class="bmi-description">
+            A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances
+            of experiencing health issues later on, such as obesity and type 2 diabetes. Aim for a nutritious diet with
+            reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular
+            physical activity, ideally about 30 minutes daily for five days a week.
+          </p>
+        </div>
+      </section>
+      <section class="good-habits">
+        <div class="habits">
+          <div class="habits-icon"><img src="/assets/images/icon-eating.svg" alt="eating icon" /></div>
+          <div class="habits-content">
+            <h3 class="habits-title">Healthy eating</h3>
+            <p class="habits-description">
+              Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and
+              mood.
+            </p>
+          </div>
+        </div>
+        <div class="habits">
+          <div class="habits-icon"><img src="/assets/images/icon-exercise.svg" alt="exercise icon" /></div>
+          <div class="habits-content">
+            <h3 class="habits-title">Regular exercise</h3>
+            <p class="habits-description">
+              Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and
+              longevity.
+            </p>
+          </div>
+        </div>
+        <div class="habits">
+          <div class="habits-icon"><img src="/assets/images/icon-sleep.svg" alt="sleep icon" /></div>
+          <div class="habits-content">
+            <h3 class="habits-title">Adequate sleep</h3>
+            <p class="habits-description">
+              Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and
+              rejuvenation.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="limitations">
+        <div class="limits-text-wrapper">
+          <h2 class="content-title">Limitations of BMI</h2>
+          <p class="content-description">
+            Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups
+            should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.
+          </p>
+        </div>
+        <!-- <div class="limits-detail-wrapper"></div> -->
+        <div class="reason gender">
+          <div class="title-box">
+            <img src="/assets/images/icon-gender.svg" alt="gender icon" />
+            <h3>Gender</h3>
+          </div>
+          <p class="reason-description">
+            Gender The development and body fat composition of girls and boys vary with age. Consequently, a child's age and
+            gender are considered when evaluating their BMI.
+          </p>
+        </div>
+        <div class="reason age">
+          <div class="title-box">
+            <img src="/assets/images/icon-age.svg" alt="gender icon" />
+            <h3>Age</h3>
+          </div>
+          <p class="reason-description">
+            In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content.
+          </p>
+        </div>
+        <div class="reason muscle">
+          <div class="title-box">
+            <img src="/assets/images/icon-muscle.svg" alt="gender icon" />
+            <h3>Muscle</h3>
+          </div>
+          <p class="reason-description">
+            BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat.
+          </p>
+        </div>
+        <div class="reason pregnancy">
+          <div class="title-box">
+            <img src="/assets/images/icon-pregnancy.svg" alt="gender icon" />
+            <h3>Pregnancy</h3>
+          </div>
+          <p class="reason-description">
+            Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is
+            advisable to minimise health risks for both mother and child.
+          </p>
+        </div>
+        <div class="reason race">
+          <div class="title-box">
+            <img src="/assets/images/icon-race.svg" alt="gender icon" />
+            <h3>Race</h3>
+          </div>
+          <p class="reason-description">
+            Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To
+            learn more, it is advised to discuss this with your GP or practice nurse.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

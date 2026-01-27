@@ -1,0 +1,470 @@
+@import url(/normalizer.css);
+@font-face {
+  font-family: "Inter";
+  src: url(/assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+body {
+  font-family: "Inter";
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+section {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  section {
+    padding: 88px 144px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+main.bmi-calculator {
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+section.calculator {
+  position: relative;
+}
+section.calculator .logo {
+  margin: 0 auto;
+}
+section.calculator .logo img {
+  display: block;
+}
+@media screen and (min-width: 1024px) {
+  section.calculator .logo {
+    margin: 0;
+  }
+}
+section.calculator .container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+@media screen and (min-width: 1024px) {
+  section.calculator .container {
+    flex-direction: row;
+  }
+}
+section.calculator .container .calculator-content {
+  text-align: center;
+  text-wrap: pretty;
+}
+section.calculator .container .calculator-content .main-title {
+  padding: 0 32px;
+  font-size: 48px;
+  color: #253347;
+}
+@media screen and (min-width: 1024px) {
+  section.calculator .container .calculator-content {
+    width: 50%;
+    padding-right: 72px;
+    text-align: left;
+  }
+  section.calculator .container .calculator-content .main-title {
+    padding: 0;
+  }
+}
+section.calculator::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 640px;
+  max-height: 100%;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  background-image: linear-gradient(90deg, white, #d6fcfe, #d6e6fe);
+  z-index: -1;
+}
+@media screen and (min-width: 1024px) {
+  section.calculator::after {
+    width: 70%;
+    height: 728px;
+  }
+}
+
+.bmi-app {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: white;
+  color: #253347;
+  box-shadow: 0 0 32px 8px #e1e7fe;
+}
+@media screen and (min-width: 1024px) {
+  .bmi-app {
+    width: 50%;
+  }
+}
+.bmi-app .bmi-app__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (min-width: 768px) {
+  .bmi-app .bmi-app__form {
+    gap: 32px;
+  }
+}
+
+.measurement-unit {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.measurement-unit .radio-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-weight: 600;
+}
+.measurement-unit .radio-group .radio {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  align-items: center;
+}
+.measurement-unit .radio-group .radio input[type=radio] {
+  width: 32px;
+  height: 32px;
+}
+
+.user-data {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+.user-data .input-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.user-data .input-box label {
+  color: #5e6e85;
+}
+.user-data .input-box input[type=number] {
+  width: 100%;
+  padding: 32px;
+  border: 1px solid #253347;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #253347;
+}
+@media screen and (min-width: 768px) {
+  .user-data .input-box input[type=number] {
+    padding: 16px;
+  }
+}
+.user-data .input-box::after {
+  position: absolute;
+  display: block;
+  right: 32px;
+  bottom: 32px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #345ff6;
+}
+@media screen and (min-width: 768px) {
+  .user-data .input-box::after {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+.user-data.metric .input-box.height::after {
+  content: "cm";
+}
+.user-data.metric .input-box.weight::after {
+  content: "kg";
+}
+.user-data.imperial {
+  flex-direction: column;
+}
+.user-data.imperial .input-box {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.user-data.imperial .input-box .input-wrapper {
+  display: flex;
+  gap: 16px;
+}
+.user-data.imperial .input-box::before {
+  position: absolute;
+  display: block;
+  right: 32px;
+  bottom: 32px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #345ff6;
+}
+@media screen and (min-width: 768px) {
+  .user-data.imperial .input-box::before {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+.user-data.imperial .input-box.height::before {
+  content: "ft";
+  left: 50%;
+  transform: translateX(-42px);
+}
+.user-data.imperial .input-box.height::after {
+  content: "in";
+}
+.user-data.imperial .input-box.weight::before {
+  content: "st";
+  left: 50%;
+  transform: translateX(-42px);
+}
+.user-data.imperial .input-box.weight::after {
+  content: "lbs";
+}
+@media screen and (min-width: 768px) {
+  .user-data {
+    flex-direction: row;
+  }
+}
+
+.user-data.active {
+  display: flex;
+}
+
+.bmi-result {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: #345ff6;
+  color: white;
+}
+@media screen and (min-width: 768px) {
+  .bmi-result {
+    flex-direction: row;
+    border-top-right-radius: 128px;
+    border-bottom-right-radius: 128px;
+  }
+}
+.bmi-result .result-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  font-weight: 600;
+}
+.bmi-result .result-box .result-bmi {
+  font-size: 48px;
+}
+.bmi-result .result-content {
+  width: 100%;
+  line-height: 1.5rem;
+}
+.bmi-result .result-content .classification {
+  font-weight: 600;
+}
+.bmi-result .result-content .range {
+  font-weight: 600;
+}
+
+section.what-means {
+  position: relative;
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  section.what-means {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  section.what-means::after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: 144px;
+    top: 0;
+    width: 86px;
+    height: 201px;
+    background-image: url(/assets/images/pattern-curved-line-left.svg);
+    background-repeat: no-repeat;
+  }
+}
+section.what-means .main-image img {
+  display: block;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  section.what-means .main-image {
+    width: 50%;
+  }
+}
+section.what-means .content {
+  padding: 32px;
+}
+section.what-means .content .content-title {
+  font-size: 32px;
+  color: #253347;
+}
+section.what-means .content .bmi-description {
+  line-height: 1.5rem;
+  color: #5e6e85;
+}
+@media screen and (min-width: 768px) {
+  section.what-means .content {
+    width: 50%;
+  }
+}
+
+section.good-habits {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: rgba(179, 211, 241, 0.1);
+}
+@media screen and (min-width: 768px) {
+  section.good-habits {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1024px) {
+  section.good-habits {
+    border-radius: 16px;
+  }
+}
+section.good-habits .habits {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media screen and (min-width: 768px) {
+  section.good-habits .habits {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1024px) {
+  section.good-habits .habits {
+    flex-direction: column;
+  }
+}
+section.good-habits .habits .habits-title {
+  font-size: 24px;
+  color: #253347;
+}
+section.good-habits .habits .habits-description {
+  color: #5e6e85;
+}
+
+section.limitations {
+  display: flex;
+  margin-bottom: 40px;
+  gap: 32px;
+  text-align: center;
+}
+section.limitations .content-title {
+  font-size: 32px;
+  color: #253347;
+}
+section.limitations .content-description {
+  color: #5e6e85;
+}
+section.limitations .reason {
+  padding: 24px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 12px 12px 32px 8px #e1e7fe;
+}
+section.limitations .reason .title-box {
+  display: flex;
+  gap: 16px;
+  color: #253347;
+}
+section.limitations .reason .reason-description {
+  text-align: left;
+  color: #5e6e85;
+}
+@media screen and (min-width: 768px) {
+  section.limitations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  section.limitations .limits-text-wrapper {
+    grid-column: 1/-1;
+  }
+  section.limitations .reason:last-child {
+    grid-column: 1/-1;
+    width: 50%;
+    justify-self: center;
+  }
+}
+@media screen and (min-width: 1024px) {
+  section.limitations {
+    position: relative;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+  section.limitations .limits-text-wrapper {
+    grid-column: 1/4;
+    grid-row: 1/2;
+    text-align: left;
+  }
+  section.limitations .reason.gender {
+    grid-column: 4/7;
+    grid-row: 1/2;
+    width: 66%;
+    justify-self: center;
+  }
+  section.limitations .reason.age {
+    grid-column: 3/5;
+    grid-row: 2/3;
+  }
+  section.limitations .reason.muscle {
+    grid-column: 5/7;
+    grid-row: 2/3;
+  }
+  section.limitations .reason.pregnancy {
+    grid-column: 2/4;
+    grid-row: 3/4;
+  }
+  section.limitations .reason:last-child {
+    grid-column: 4/6;
+    width: auto;
+    justify-self: start;
+  }
+  section.limitations::after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 240px;
+    top: 304px;
+    width: 86px;
+    height: 201px;
+    background-image: url(/assets/images/pattern-curved-line-right.svg);
+    background-repeat: no-repeat;
+  }
+}/*# sourceMappingURL=style.css.map */
