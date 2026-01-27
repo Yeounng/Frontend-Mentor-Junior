@@ -14,8 +14,8 @@
 
 ### Links
 
-- (Solution URL)[https://www.frontendmentor.io/solutions/]
-- (Live Site URL)[https://your-live-site-url.com]
+- (Solution URL)[https://www.frontendmentor.io/solutions/bmi-calculator--ZXhFJPBD]
+- (Live Site URL)[https://sensational-sundae-4a105f.netlify.app/]
 
 ## 1. 프로젝트 진행 과정에서 마주친 문제
 
